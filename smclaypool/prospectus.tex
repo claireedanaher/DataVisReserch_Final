@@ -1,0 +1,173 @@
+\documentclass{proc}
+
+\begin{document}
+
+\title{%
+    The Effects of Interaction on Bayesian Reasoning \\
+    \large Type: Technique
+}
+
+\author{Saahil Claypool}
+
+\maketitle
+
+\section{Introduction}
+
+Inference has long been a hard problem for humans, 
+regardless of education. But, as evidence based reasoning becomes more
+important, a flexible system for reasoning about bayesian statistics is 
+necessary. 
+
+While researchers have developed a large number of different techniques to 
+help users understand bayesian models, the techniques vary in both effectiveness,
+generalizability, or scalability. Prior effective techniques can be categorized into two (non-distinct) cateogires: 
+frequency visualizations and structured textual representations \cite{Ottley2016}. But, frequency diagrams
+have had contradictory results when generalized to larger populations, and textual representations
+may be more problem-specific. It may be harder to write a paragraph explaining a problem in a structured manner, whereas
+graphs can be recreated from the data without very little effort. 
+
+In this paper, we discuss the use of interactive visualizations and a question-style
+presentation of information to help end users make sense of bayesian models. We postulate that, 
+becuase only specific portions of the problem space need to be known by the user to answer 
+questions about the bayesian models \cite{Gigerenzer1995}, we can reduce the cognitive load on the user by 
+constraining the information presented to the user with interaction and probing questions. While prior work has been 
+in interactive bayesian representations, those visualizations do not constrain the problem, and still
+force the user to keep a larger portion of the bayesian model in memory. Our visualizations aim to fix this by 
+showing only pertant information to the users' queries. 
+
+
+
+\section{One-sentence description}
+
+To create an easier to understand representation for bayesian probability models, we explore the user
+of interaction to reduce the information presented to a user, and thus improve their ability to make accurate
+inferences. 
+
+\section{Project Type}
+
+Technique / Evaluation (maybe more technique and hypothesizing why this might work?)
+
+\section{Audience} 
+
+The outcomes of this project will help researchers understand how to better present bayesian probabilities, 
+and also understand how the selective presentation of information can help improve task based activities. 
+
+Without this work, there will continue to be a large number of false assumptions caused by a misunderstanding of 
+bayesian probabilities. 
+
+\section{Approach}
+\subsection{Details}
+\begin{enumerate}
+\item Create a small interactive tool
+
+The 'tool' will be provided as a reference similar to prior studies. This will hopefully help the user reason
+about the problem by providing a visual aid. So, while the numbers will be different, it should allow them to 
+make a similar 'query' and thus answer their question about their sample. 
+
+\item Quiz the user
+
+Given the interactive template or tool, the user will be asked some bayesian question about a new sample. 
+This will be compared to a set of users without the interactive tool. 
+
+The question will asked similar to prior work: 
+\begin{quote}
+    participates in routine screening. If a woman has breast cancer, the
+    probability is 80\% that she will get a positive mammography. If a woman
+    does not have breast cancer, the probability is 9.6\% that she will also
+    get a positive mammography. A woman in this age group had a positive
+    mammography in a routine screening \cite{Gigerenzer1995}.
+\end{quote}
+\end{enumerate}
+
+
+\subsection{Evidence for Success}
+
+indicates that people do not need to keep the entire bayesian model in their head to make inferences, but 
+rather just the few pertinent numbers for their estimations \cite{Gigerenzer1995}. So, by allowing people
+to narrow down the bayesian model to answer just the question asked, maybe they will be able to ignore the other
+distracting numbers and better answer the question. 
+
+This interactive design has been tested before \cite{Tsai2011}, but failed to reach significant results.
+This could be because the visualizations provided did not hide extraneus information, nor did it use aligned axes
+for the comparison of categories. Both of these together may have made it harder for users to reason about the problem. 
+
+Further, with modern technologies like javascript, we should be able to createa a richer interactive model 
+that is more natural for the user to use than an excel sheet and visual basic scripts. 
+
+
+\section{Best-case Impact Statement}
+This paper will be successful if it is able to provide difinitive results on an interactive design helping in 
+bayesian reasoning. 
+
+\section{Major Milestones}
+
+\begin{enumerate}
+    \item Create the interactive tool
+    \item Create a testing framework to run users through
+
+    including the data and questions they will be asked about the data
+
+    \item Run a small set of pilot users
+
+    Tweak study as necessary
+
+    \item Run a larger set of users
+\end{enumerate}
+
+\section{Obstacles}
+
+\subsection{Major obstacles} % (if these fail, the project is over)
+
+\begin{enumerate}
+    \item Cannot get users within the next 7 weeks
+    \item Users cannot figure out how to interact with a tool on a website
+
+    There isn't a gaurentee that non-technical users will intuitively click around on a graph. 
+
+\end{enumerate}
+
+\subsection{Minor obstacles}
+
+\begin{enumerate}
+    \item Scaffolding the experiment is slightly undefined
+\end{enumerate}
+
+\section{Resources Needed}
+\begin{enumerate}
+    \item A lab to run users
+    \item OR mechanical turk
+\end{enumerate}
+
+
+\section{5 Related Publications}
+\begin{enumerate}
+    \item How to improve Bayesian reasoning \cite{Gigerenzer1995} \item
+    Assessing the effect of visualizations on bayesian reasoning through
+    crowdsourcing \cite{Micallef2012} 
+
+    \item Improving Bayesian Reasoning: The
+    Effects of Phrasing, Visualization, and Spatial Ability \cite{Ottley2016}
+    \item Interactive visualizations to improve Bayesian reasoning
+    \cite{Tsai2011} 
+
+    \item Pictorial representations in statistical reasoning
+    \cite{Brase2009} 
+
+    \item Using tree diagrams without numerical values in
+    addition to relative numbers improves students' numeracy skills: A
+    randomized study in medical education \cite{Friederichs2014}
+
+\end{enumerate}
+
+\section{Define Success}
+
+Optimally, we will have (statistically) significant results indicating groups with an interactive
+model will out-perform those with just text. 
+
+We may be able to make do with case studies of smaller users and a discussion of how they ended up 
+actually interacting (or not) with the interactive model. This could provide insight on how untrained
+users are to interact with a computer to solve problems. 
+
+\bibliographystyle{abbrv}
+\bibliography{prospectus}
+\end{document}

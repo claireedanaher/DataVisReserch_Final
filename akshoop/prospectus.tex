@@ -1,0 +1,119 @@
+\documentclass{proc}
+
+\begin{document}
+
+\title{Effectiveness of Animation in Storytelling with Data  - Shoop Idea 1}
+
+\author{Alexander Shoop}
+
+\maketitle
+
+\section{Introduction}
+
+In this current generation where end-users and developers are increasingly surrounded by all facets of data, visualizations can be extremely helpful in getting a final-presentable result. Storytellers in particular have increasingly started to integrate visualizations in their narratives, such as animated transitions between chart types to avoid confusing the reader \cite{segelNarrative}. When it comes to data, storytelling via visualization is an effective way to set-the-scene and tell your intended story.
+
+We already realize and understand that "with careful design" it is possible to have animated transitions significantly improve graphical perception of changes between statistical data graphics \cite{heerAnimated}. Therefore we believe that animated transitions can help with the storytelling aspect of data visualization. 
+
+The community and especially online blogposts have become more saturated with data storytelling; another coined term is "scrollytelly" because you scroll down a webpage to continue the visualization. We believe that, in order to tell an effective and interpretable story, one can utilize the potential of animations (aka. transitions) to create visualizations that have a smooth flow and clearer narrative.
+
+\section{One-sentence description}
+
+Through controlled storytelling visualization experiments we determine the effective of the use of transition animations in conveying a clear story through data visualizations.
+
+\section{Project Type}
+
+Evaluation taxonomy, in other words a Summative User Study, with an implementation.
+
+\section{Audience} 
+\begin{quote}
+\textit{Who is the audience for this project? 
+How does it meet their needs? 
+What happens if their needs remain unmet?}
+\end{quote}
+
+The best-intended audience for our results would be anyone that wishes to incorporate animations/transitions in their storytelling visualization, for example web journalists of data-vis storyteller enthusiasts. The use of animations in storytelling would likely just serve as an augmented feature on-top of the primary data visualization. However as an example, if a scrollytelly visualization wants to keep the reader on track with an intended narrative, then animated transitions between certain graphics could help the reader fully understand the intended story.
+
+\section{Approach}
+\subsection{Details}
+\begin{quote}
+\textit{What is your approach?}
+
+We will create a basic and understandable storytelling with data visualization, which essentially has version A and version B (think AB testing). 
+
+Version A will be the primary visualization, with limited interactivity. The test subject will view the page and also be allowed to scroll down the page, to see the other sections of the visualization narrative. The participant will be questioned on certain fields to test if they understood the intended "story."
+
+Version B will be a near-identical visualization to version A but with smooth animations and transitions between the graphics. In other words, the primary transition we would implement is between major vis sections of the narrative, so that the "scrollytelly" aspect has a smooth flow. We would then hopefully see the subject's responses relate to the changes made which the animations/transitions create; ie, we would see the responses match more correctly with the story.
+
+\end{quote}
+
+\subsection{Evidence for Success}
+\begin{quote}
+\textit{Why do you think it will work?} 
+\end{quote}
+
+We believe it will work because of the anecdotal feedback that we will receive from the respondent. Furthermore, if we see that the responses on our version A visualization do not quite match with the intended story narrative, and if version B's participant responses align more closely with the intended message, then we will have further evidence that our version B (the one with animations/transitions) was successful in presenting a good storytelling visualization.
+
+\section{Best-case Impact Statement}
+\begin{quote}
+\textit{In the best-case scenario, what would be the impact statement (conclusion statement) for this project?}
+\end{quote}
+
+In the best-case scenario, after performing our limited experimentational run, we will have evidence of the usefulness of animations in storytelling with data. This could pave the way for more careful use of animations in storytelling, which could lead to more engaging, visually interesting, and compelling stories told via data; it's still important to remember though that one can abuse animations and transitions where it's unnecessary or used wrongly.
+
+\section{Major Milestones}
+
+\begin{itemize}
+\item Create two versions (non-anim \& with anim) of a web storytelling visualization, one with bar charts and pie charts so that the use of transitions would make sense.
+\item Create a set of questions that judge the participants interpretation of the "story."
+\item Run the experiment with multiple individuals (close colleagues).
+\end{itemize}
+
+\section{Obstacles}
+
+\subsection{Major obstacles} % (if these fail, the project is over)
+
+\begin{itemize}
+\item If the collected responses show that the surveyed users do not get a skewed/different interpretation of the story between animated-vs-not-animated, then our hypothesis would be shot.
+\end{itemize}
+
+\subsection{Minor obstacles}
+
+\begin{itemize}
+\item Making a good storytelling visualization. It may prove to be a challenge to create an interpretable storytelling vis (one that has graphics in it), and then also to consider the best way to do animated transitions between the major sections of the storytelling visualization.
+\item Finding the respondents to take our A/B storytelling visualization experiment.
+\end{itemize}
+
+\section{Resources Needed}
+\begin{quote}
+\textit{What additional resources do you need to complete this project?}
+\end{quote}
+
+\begin{itemize}
+\item A thorough literature review.
+\item A lab to run experiment.
+\end{itemize}
+
+\section{5 Related Publications}
+\begin{quote}
+\textit{List 5 major publications that are most relevant to this project, and how they are related (sample citation}
+\end{quote}
+\begin{itemize}
+    \item J. Heer et al. created a 2007 paper on the effectiveness of animated transitions in statistical data graphics\cite{heerAnimated}. It serves as the foundational paper on animation transitions, even being brought up in Mike Bostock's 2011 paper on D3.
+    \item Liao et al. propose a new semi-automatic technique to creating animations of volume data based on the user's interaction in navigating a dataset and then adjusting rendering parameters \cite{liaoStorytellingNavigation}. 
+    \item Segel et al. talk about design strategies for effective narrative visualization, including narrative flow, interactivity, and design space \cite{segelNarrative}.
+    \item Hullman et al. conducted a qualitative analysis on 82 participants on sequences in narrative visualization. There was partial support for how sequential order can support comparisons between visualizations\cite{HullmanSeqNarrative}.
+    \item Ruchikachorn and Mueller perform a study where their "morphing" visualizations (ie, transition) that go between graphic A to graphic B help participants in better understanding the unfamiliar graphic B visualization, for eg. a pie chart transitioning into a treemap \cite{RuchiVisAnalogy}.
+    
+\end{itemize}
+
+
+\section{Define Success}
+\begin{quote}
+\textit{What is the minimum amount of work necessary for this work be publishable?}
+\end{quote}
+
+If we have enough evidence that our participants (say, about 5-10) believe that the animations did help in understanding the storytelling visualization, then we can say mission accomplished. 
+
+\bibliographystyle{abbrv}
+\bibliography{prospectus}
+\end{document}

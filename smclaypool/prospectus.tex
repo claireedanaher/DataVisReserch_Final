@@ -7,55 +7,34 @@
     \large Type: Technique
 }
 
-\author{Saahil Claypool}
+\author{Saahil Claypool, Claire Danaher, and Alexander Shoop}
 
 \maketitle
 
 \section{Introduction}
+Correctly interpreting inference has long been a challenging problem for humans regardless of education level. As data becomes increasingly available in diverse realms, a reliable system for effectively reasoning about Bayesian statistics becomes increasingly important. 
 
-Inference has long been a hard problem for humans, 
-regardless of education. But, as evidence based reasoning becomes more
-important, a flexible system for reasoning about Bayesian statistics is 
-necessary. 
+Researchers have developed a number of techniques for 
+helping users to understand Bayesian models. However, effectiveness, generalizability, and scalability have varied. Prior techniques can be categorized into two (non-distinct) categories: 
+frequency visualizations and structured textual representations \cite{Ottley2016}. Challenges associated with frequency diagrams include contradictory results when generalized to larger populations. Challenges associated with textual representations include that explaining a problem in a structured manner can be challenging.  
 
-While researchers have developed a large number of different techniques to 
-help users understand Bayesian models, the techniques vary in both effectiveness,
-generalizability, or scalability. Prior effective techniques can be categorized into two (non-distinct) categories: 
-frequency visualizations and structured textual representations \cite{Ottley2016}. But, frequency diagrams
-have had contradictory results when generalized to larger populations, and textual representations
-may be more problem-specific. It may be harder to write a paragraph explaining a problem in a structured manner, whereas
-graphs can be recreated from the data without very little effort. 
+In this paper, we propose the use of interactive visualizations in conjunction with a question-style presentation of information to help end users make sense of Bayesian models. Past research has postulated that only specific portions of the problem space need to be known by the user to answer questions about the Bayesian models \cite{Gigerenzer1995}. Therefore, the cognitive load on the user can be reduced by constraining the information presented using interaction and probing questions. 
 
-In this paper, we discuss the use of interactive visualizations and a question-style
-presentation of information to help end users make sense of Bayesian models. We postulate that, 
-because only specific portions of the problem space need to be known by the user to answer 
-questions about the Bayesian models \cite{Gigerenzer1995}, we can reduce the cognitive load on the user by 
-constraining the information presented to the user with interaction and probing questions. While prior work has been 
-in interactive Bayesian representations, those visualizations do not constrain the problem, and still
-force the user to keep a larger portion of the Bayesian model in memory. Our visualizations aim to fix this by 
-showing only pertinent information to the users' queries. 
-
-
+While prior work has been completed in interactive Bayesian representations, visualizations were not constrained and still forced the user to keep a larger portion of the Bayesian model in memory. Our visualizations aim to fix this by showing only pertinent information to the users' queries. 
 
 \section{One-sentence description}
 
-To create an easier to understand representation for Bayesian probability models, we explore the user
-of interaction to reduce the information presented to a user, and thus improve their ability to make accurate
-inferences. 
+We propose exploring the use of interaction to reduce cognitive load through user interactions whereby making it easier to understand visual representation of Bayesian probability models thus improving a users ability to make accurate inferences.
+
+ 
 
 \section{Project Type}
 
-Technique 
-
-The goal would be to create a new technique and evaluate how effective it is for Bayesian Inference tasks. 
+This will be a technique paper. The goal would be to create a new technique and evaluate how effective it is for Bayesian Inference tasks. 
 
 \section{Audience} 
 
-The outcomes of this project will help researchers understand how to better present Bayesian probabilities, 
-and also understand how the selective presentation of information can help improve task based activities. 
-
-Without this work, there will continue to be a large number of false assumptions caused by a misunderstanding of 
-Bayesian probabilities. 
+The audience for this paper is researchers interested in understand how to better present Bayesian probabilities. This paper may be of interest to individuals interested in understanding how the selective presentation of information can help improve task based activities. Without this work, there will continue to be a large number of false assumptions caused by a misunderstanding of Bayesian probabilities. 
 
 \section{Approach}
 \subsection{Details}
@@ -79,12 +58,13 @@ The question will asked similar to prior work:
     get a positive mammography. A woman in this age group had a positive
     mammography in a routine screening \cite{Gigerenzer1995}.
 \end{quote}
+In the base scenario for this proposal, we will conduct a small number of user studies. The results of this study will serve as proof of feasibility for a larger study that could produce statistically significant results. However, the larger study is likely outside the scope of this paper.
 \end{enumerate}
 
 
 \subsection{Evidence for Success}
 
-indicates that people do not need to keep the entire Bayesian model in their head to make inferences, but 
+User study will indicates that people do not need to keep the entire Bayesian model in their head to make inferences, but 
 rather just the few pertinent numbers for their estimations \cite{Gigerenzer1995}. So, by allowing people
 to narrow down the Bayesian model to answer just the question asked, maybe they will be able to ignore the other
 distracting numbers and better answer the question. 
@@ -126,10 +106,9 @@ Bayesian reasoning.
 \subsection{Major obstacles} % (if these fail, the project is over)
 
 \begin{enumerate}
-    \item Cannot get users within the next 7 weeks
+    \item Cannot get users within the next 5 weeks
     \item Users cannot figure out how to interact with a tool on a website
-
-    There isn't a guarantee that non-technical users will intuitively click around on a graph. 
+    \item There isn't a guarantee that non-technical users will intuitively click around on a graph. 
 
 \end{enumerate}
 
@@ -141,8 +120,8 @@ Bayesian reasoning.
 
 \section{Resources Needed}
 \begin{enumerate}
-    \item A lab to run users
-    \item OR Mechanical Turk
+    \item Willing participants for the case study
+    \item *Potentially* Mechanical turk survey users
 \end{enumerate}
 
 
@@ -168,13 +147,13 @@ Bayesian reasoning.
 
 \section{Define Success}
 
-Optimally, we will have (statistically) significant results indicating groups with an interactive
-model will out-perform those with just text. 
+Success for this project will be achieved through designing an interactive tool that leads the user through a set of steps required to interpret Bayesian statistics. 
 
-We may be able to make do with case studies of smaller users and a discussion of how they ended up 
-actually interacting (or not) with the interactive model. This could provide insight on how untrained
-users are to interact with a computer to solve problems. These case studies would provide a lower barrier for 
+We will conduct a case studies of a small sample of users and have a discussion of how they ended up 
+actually interacting (or not) with the interactive model. This could provide insight on how untrained users are to interact with a computer to solve problems. These case study would provide a lower barrier for 
 a useful outcome of our paper. 
+
+If time allows, this optimized visualization from the case study will be evaluated using mechanical turk surveys. This would allow us to test the hypothesis that groups that answer the questions using the interactive model will out-perform those with just text. 
 
 \bibliographystyle{abbrv}
 \bibliography{prospectus}

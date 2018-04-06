@@ -1,27 +1,25 @@
 import React, { Component } from 'react';
 import './Interactive.css';
+import person from './person.svg';
 import * as d3 from 'd3'; 
 
+/**
+ * props: 
+ *  has_condition: float
+ *  positive_condition: float
+ *  positive_no_condition: float
+ *  number_of_people: count
+ *  test: -1, 0, 1: 0 if not known
+ *  condition: -1, 0, 1: 0 if not known
+ *  
+ */
 export class Interactive extends Component {
   d3id = "D3Vis";
 
   defaults = {
-    height: 600, width: 600, margin : {
-      top: 20, right: 20, bottom: 20, left: 250,
+    height: 600, width: 800, margin : {
+      top: 20, right: 120, bottom: 20, left: 250,
     }
-  }
-  /**
-   * props: 
-   *  has_condition: float
-   *  positive_condition: float
-   *  positive_no_condition: float
-   *  number_of_people: count
-   *  test: -1, 0, 1: 0 if not known
-   *  condition: -1, 0, 1: 0 if not known
-   *  
-   */
-  constructor(props) {
-    super(props); 
   }
   componentDidMount() {
     this.renderD3(); 
@@ -32,7 +30,7 @@ export class Interactive extends Component {
   }
 
   renderD3 = () => {
-    let chartWidth = this.defaults.height - this.defaults.margin.left - this.defaults.margin.right; 
+    let chartWidth = this.defaults.width- this.defaults.margin.left - this.defaults.margin.right; 
     let chartHeight = this.defaults.height - this.defaults.margin.top - this.defaults.margin.bottom; 
     let containerId = '#' + this.d3id; 
 
@@ -60,16 +58,42 @@ export class Interactive extends Component {
       .data(data)
       .enter() 
       .append('g')
+      .attr('class', 'attribute')
       .attr('transform', (_, i) => {
-        return `translate(-10, ${labelHeight * (i + .5)})`;
+        return `translate(0, ${labelHeight * (i + .5)})`;
       });
-      attributes.append('text')
-      .attr('text-anchor', 'end')
-      .text((d, i) => d.label);
-      attributes.append('circle')
-        .attr('cx', (d, i) => i * 10)
-        .attr('r', 10)
-        .attr('fill', 'black');
+
+      // let iconOffset = chartWidth / Math.max(...data.map(d => d.count)) 
+      let iconOffset = chartWidth / Math.max(...data.map(d => d.count)) 
+      attributes.selectAll('circle')
+        .data((d) => [...Array(d.count).keys()])
+        .enter()
+        // <image x="10" y="20" width="80" height="80" xlink:href="recursion.svg" />
+        .append('image') // change to icon
+        .attr('x', (_, i) => (1 + i) * iconOffset)
+        .attr('y', (_, i) => -15)
+        .attr('width', 30)
+        .attr('height', 30)
+        .attr('xlink:href', person);
+        // .append('circle') // change to icon
+        // .attr('cx', (_, i) => (1 + i) * iconOffset)
+        // .attr('r', 5)
+        // .attr('fill', 'black');
+      
+      attributes
+        .append('g')
+        .attr('transform', `translate(-10, 5)`)
+        .append('text')
+        .attr('class', 'test_label')
+        .attr('text-anchor', 'end')
+        .text((d) => d.label);
+
+      attributes
+        .append('g')
+        .attr('transform', d => `translate(${iconOffset * (d.count + 2)}, 5)`)
+        .append('text')
+        .text(d => d.count);
+
 
 
     chart.append('line')
@@ -130,7 +154,7 @@ export class Interactive extends Component {
           negative_no_condition
         ]
       }
-    } else if (this.props.test == 1) {
+    } else if (this.props.test === 1) {
       if(this.props.condition === 0) {
         labels = [
           "Positive Test & Has Condition",

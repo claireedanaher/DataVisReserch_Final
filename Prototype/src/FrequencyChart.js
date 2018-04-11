@@ -17,7 +17,7 @@ export class FrequencyChart extends Component {
   d3id = "D3Vis";
 
   defaults = {
-    height: 600, width: 800, margin : {
+    height: 600, width: 1400, margin : {
       top: 20, right: 120, bottom: 20, left: 250,
     }
   }

@@ -53,7 +53,7 @@ export class Interactive extends Component {
           has_condition={0.1}
           positive_condition={0.9}
           positive_no_condition={0.1}
-          number_of_people={40}
+          number_of_people={100}
           test={this.state.test}
           condition={this.state.condition}
         />

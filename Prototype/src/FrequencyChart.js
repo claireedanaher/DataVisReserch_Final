@@ -16,6 +16,13 @@ import * as d3 from 'd3';
 export class FrequencyChart extends Component {
   d3id = "D3Vis";
 
+  // necessary part for getDerivedStateFromProps
+  state = {
+    condition: 0, 
+    test: 0,
+  }
+  
+
   defaults = {
     height: 200, width: 1200, margin : {
       top: 20, right: 120, bottom: 20, left: 250,
@@ -25,7 +32,79 @@ export class FrequencyChart extends Component {
     this.renderD3(); 
   }
 
+  // getting 'nextProps' from 'prevState'
+  static getDerivedStateFromProps(nextProps, prevState) {
+    // where TEST = 0
+    if (nextProps.test === 0) {
+      if (nextProps.condition === 1) {
+        return {
+          condition: 1,
+          test: 0
+        };
+      }
+      else if (nextProps.condition === 0) {
+        return {
+          condition: 0,
+          test: 0
+        };
+      }
+      else {
+        return {
+          condition: -1,
+          test: 0
+        };
+      }
+    }
+    // where TEST = 1
+    else if (nextProps.test === 1) {
+      if (nextProps.condition === 1) {
+        return {
+          condition: 1,
+          test: 1
+        };
+      }
+      else if (nextProps.condition === 0) {
+        return {
+          condition: 0,
+          test: 1
+        };
+      }
+      else {
+        return {
+          condition: -1,
+          test: 1
+        };
+      }
+    }
+    // where TEST = -1
+    else {
+      if (nextProps.condition === 1) {
+        return {
+          condition: 1,
+          test: -1
+        };
+      }
+      else if (nextProps.condition === 0) {
+        return {
+          condition: 0,
+          test: -1
+        };
+      }
+      else {
+        return {
+          condition: -1,
+          test: -1
+        };
+      }
+    }
+    return null;
+  }
+
   componentDidUpdate() {
+    console.log('freqchart condition is:')
+    console.log(this.state.condition)
+    console.log('freqchart test is:')
+    console.log(this.state.test)
     this.renderD3(); 
   }
 

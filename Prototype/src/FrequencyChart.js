@@ -101,10 +101,6 @@ export class FrequencyChart extends Component {
   }
 
   componentDidUpdate() {
-    console.log('freqchart condition is:')
-    console.log(this.state.condition)
-    console.log('freqchart test is:')
-    console.log(this.state.test)
     this.renderD3(); 
   }
 

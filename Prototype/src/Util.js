@@ -22,7 +22,7 @@ let data = [
       number_of_people: 100,
     },
     {
-      has_condition: 0.3,
+      has_condition: 0.25,
       positive_condition: 0.9,
       positive_no_condition: 0.5,
       number_of_people: 100,

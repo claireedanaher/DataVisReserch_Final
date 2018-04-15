@@ -5,6 +5,7 @@ import { Question } from './Question';
 import { generate_data, getRandomInt } from './Util';
 import {FrequencyChart} from './FrequencyChart'
 import {TextVis} from './TextVis'
+import {StaticVis} from './StaticVis'
 
 class App extends Component {
 
@@ -45,17 +46,20 @@ class App extends Component {
     let data = this.state.data; 
     let vis = <div/>;
     let visType = "";
-    let visNum = getRandomInt(3); 
-    // let visNum = 3; 
+    // let visNum = getRandomInt(3); 
+    let visNum = 3; 
     if (visNum == 0) {
       vis = <Interactive data={data}/>
       visType = "interactive"; 
     } else if (visNum == 1) { 
         vis = <FrequencyChart {...data} test={0} condition={0}/>
-        visType = "static"; 
-    } else {
+        visType = "static_interactive"; 
+    } else if (visNum === 2) {
         vis = <TextVis {...data}/>
         visType = "text"; 
+    } else if (visNum === 3) {
+        vis = <StaticVis {...data}/>
+        visType = "static"; 
     }
     
     console.log("App is rendering");

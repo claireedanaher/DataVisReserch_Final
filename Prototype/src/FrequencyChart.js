@@ -105,7 +105,44 @@ export class FrequencyChart extends Component {
     console.log(this.state.condition)
     console.log('freqchart test is:')
     console.log(this.state.test)
-    this.renderD3(); 
+    if (this.state.condition === 1) {
+      console.log(d3.select('#D3Vis').select('g').selectAll('.attribute').data())
+      setTimeout(() => {
+        let newData = this.make_data();
+        console.log(newData)
+
+        var currChart = d3.select('#D3Vis').select('svg').select('g')
+        // bringing in newdata
+        let newFreq = currChart.selectAll('.attribute')
+                .data(newData);
+        let newIcon = newFreq.selectAll('image')
+                                .data((newData) => [Array(newData.count).keys()]);
+        console.log(newFreq)
+        newFreq.exit()
+              .attr('class', 'exit')
+              .transition().duration(750)
+              .attr('y', 60)
+              .style('fill-opacity', 0);
+        newIcon.exit()
+              .transition().duration(600)
+              .attr('y', 10)
+              .style('fill-opacity', 0)
+              .remove();
+        // newFreq.attr('class', 'update')
+        //         .attr('y', 0)
+        //         .transition().duration(750)
+        //         .attr('x', 2);
+        // newFreq.enter()
+        //       .append('attrib')
+        //       .transition().duration(700)
+        //       .attr('transform', `translate(-10, 5)`);
+
+        // newFreq.selectAll('.circle')
+        //         .exit()
+        //       .remove();
+      }, 700);
+    }
+    //this.renderD3(); 
   }
 
   renderD3 = () => {

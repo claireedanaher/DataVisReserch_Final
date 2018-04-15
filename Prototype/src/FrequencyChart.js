@@ -100,7 +100,16 @@ export class FrequencyChart extends Component {
     return null;
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
+    console.log("Update")
+    console.log("Props was")
+    console.log(prevProps)
+    console.log("State was: ")
+    console.log(prevState)
+    console.log("State is now")
+    console.log(this.state)
+    console.log("props is now")
+    console.log(this.props)
     console.log('freqchart condition is:')
     console.log(this.state.condition)
     console.log('freqchart test is:')

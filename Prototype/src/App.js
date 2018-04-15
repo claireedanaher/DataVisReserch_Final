@@ -47,7 +47,7 @@ class App extends Component {
     let vis = <div/>;
     let visType = "";
     // let visNum = getRandomInt(3); 
-    let visNum = 3; 
+    let visNum = 0; 
     if (visNum == 0) {
       vis = <Interactive data={data}/>
       visType = "interactive"; 

@@ -30,33 +30,35 @@ export class Interactive extends Component {
   }
   
   render() {
+    let data = this.props.data;
     return (
       <div className="Interactive">
-        <h2>What do you know?</h2>
-        <h3>The Condition:</h3>
-        <div className="Query"/>
-          <form onChange={this.handle_condition_change}>
-            <input type="radio" name="condition" value="1"/>Has Condition<br/>
-            <input type="radio" name="condition" value="-1"/>No Condition<br/>
-            <input type="radio" name="condition" value="0" defaultChecked="checked"/>Unknown Condition<br/>
-          </form>
-        <div className="Query"/>
-        <h3>The Test:</h3>
-        <div className="Query"/>
-          <form onChange={this.handle_test_change}>
-            <input type="radio" name="test" value="1"/>Positive Test<br/>
-            <input type="radio" name="test" value="-1"/>Negative Test<br/>
-            <input type="radio" name="test" value="0" defaultChecked="checked"/>Unknown Test<br/>
-          </form>
-        <div className="Query"/>
-        <FrequencyChart
-          has_condition={0.1}
-          positive_condition={0.9}
-          positive_no_condition={0.1}
-          number_of_people={100}
-          test={this.state.test}
-          condition={this.state.condition}
-        />
+        <div className="Settings">
+          <h3>What do you know?</h3>
+          <h4>The Condition:</h4>
+          <div className="Query"/>
+            <form onChange={this.handle_condition_change}>
+              <input type="radio" name="condition" value="1"/>Has Condition<br/>
+              <input type="radio" name="condition" value="-1"/>No Condition<br/>
+              <input type="radio" name="condition" value="0" defaultChecked="checked"/>Unknown Condition<br/>
+            </form>
+          <div className="Query"/>
+          <h4>The Test:</h4>
+          <div className="Query"/>
+            <form onChange={this.handle_test_change}>
+              <input type="radio" name="test" value="1"/>Positive Test<br/>
+              <input type="radio" name="test" value="-1"/>Negative Test<br/>
+              <input type="radio" name="test" value="0" defaultChecked="checked"/>Unknown Test<br/>
+            </form>
+          <div className="Query"/>
+        </div>
+        <div className="Vis">
+          <FrequencyChart
+            {...data}
+            test={this.state.test}
+            condition={this.state.condition}
+          />
+        </div>
       </div>
     );
   }

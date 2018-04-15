@@ -52,3 +52,6 @@ export function generate_data() {
   previous = randIndex; 
   return rand;
 }
+export function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}

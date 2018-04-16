@@ -114,44 +114,24 @@ export class FrequencyChart extends Component {
     console.log(this.state.condition)
     console.log('freqchart test is:')
     console.log(this.state.test)
-    if (this.state.condition === 1) {
-      console.log(d3.select('#D3Vis').select('g').selectAll('.attribute').data())
-      setTimeout(() => {
-        let newData = this.make_data();
-        console.log(newData)
-
-        var currChart = d3.select('#D3Vis').select('svg').select('g')
-        // bringing in newdata
-        let newFreq = currChart.selectAll('.attribute')
-                .data(newData);
-        let newIcon = newFreq.selectAll('image')
-                                .data((newData) => [Array(newData.count).keys()]);
-        console.log(newFreq)
-        newFreq.exit()
-              .attr('class', 'exit')
-              .transition().duration(750)
-              .attr('y', 60)
-              .style('fill-opacity', 0);
-        newIcon.exit()
-              .transition().duration(600)
-              .attr('y', 10)
-              .style('fill-opacity', 0)
-              .remove();
-        // newFreq.attr('class', 'update')
-        //         .attr('y', 0)
-        //         .transition().duration(750)
-        //         .attr('x', 2);
-        // newFreq.enter()
-        //       .append('attrib')
-        //       .transition().duration(700)
-        //       .attr('transform', `translate(-10, 5)`);
-
-        // newFreq.selectAll('.circle')
-        //         .exit()
-        //       .remove();
-      }, 700);
-    }
-    //this.renderD3(); 
+    setTimeout(() => {
+      d3.selectAll('#human')
+        .transition()
+        .duration(500)
+        //.attr('y', 10)
+        .style('opacity', 0);
+      d3.selectAll('#idlabel')
+        .transition()
+        .duration(500)
+        .style('fill-opacity', 0);
+      d3.selectAll('#idcount')
+        .transition()
+        .duration(500)
+        .style('fill-opacity', 0);
+    }, 500);
+    setTimeout(() => {
+      this.renderD3(); 
+    }, 1000);
   }
 
   renderD3 = () => {
@@ -159,7 +139,7 @@ export class FrequencyChart extends Component {
     let chartHeight = this.defaults.height - this.defaults.margin.top - this.defaults.margin.bottom; 
     let containerId = '#' + this.d3id; 
 
-    
+
 
     d3.select(containerId).html(''); // just clear out what is there
 
@@ -183,6 +163,7 @@ export class FrequencyChart extends Component {
       .enter() 
       .append('g')
       .attr('class', 'attribute')
+      .attr('id', 'groupdata')
       .attr('transform', (_, i) => {
         return `translate(0, ${labelHeight * (i + .5)})`;
       });
@@ -194,17 +175,24 @@ export class FrequencyChart extends Component {
         .enter()
         // <image x="10" y="20" width="80" height="80" xlink:href="recursion.svg" />
         .append('image') // change to icon
+        .attr('id', 'human')
         .attr('x', (_, i) => (1 + i) * iconOffset)
         .attr('y', (_, i) => -15)
         .attr('width', 30)
         .attr('height', 30)
-        .attr('xlink:href', person);
+        .attr('xlink:href', person)
+        .attr('class', function(d, _, i) {
+          //console.log(d)
+          //console.log(_)
+          //console.log(i)
+        });
       
       attributes
         .append('g')
         .attr('transform', `translate(-10, 5)`)
         .append('text')
         .attr('class', 'test_label')
+        .attr('id', 'idlabel')
         .attr('text-anchor', 'end')
         .text((d) => d.label);
 
@@ -212,6 +200,7 @@ export class FrequencyChart extends Component {
         .append('g')
         .attr('transform', d => `translate(${iconOffset * (d.count + 2)}, 5)`)
         .append('text')
+        .attr('id', 'idcount')
         .text(d => d.count);
 
 

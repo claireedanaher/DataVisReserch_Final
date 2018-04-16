@@ -10,6 +10,7 @@ import {StaticVis} from './StaticVis'
 class App extends Component {
 
   screen = 0;
+  row = {}; 
 
   constructor(props) {
     super(props); 
@@ -34,6 +35,7 @@ class App extends Component {
     let row = {
       guessA: guessA, guessB: guessB, data: data, visType: visType, questionN: questionN, time: time
     }
+    this.row = row; 
     console.log(row);
     this.setState({
       results: [...this.state.results , row],
@@ -42,39 +44,120 @@ class App extends Component {
     this.screen += 1; 
   }
 
-  render() {
-    let data = this.state.data; 
-    let vis = <div/>;
-    let visType = "";
-    // let visNum = getRandomInt(3); 
-    let visNum = 0; 
-    if (visNum == 0) {
-      vis = <Interactive data={data}/>
-      visType = "interactive"; 
-    } else if (visNum == 1) { 
-        vis = <FrequencyChart {...data} test={0} condition={0}/>
-        visType = "static_interactive"; 
-    } else if (visNum === 2) {
-        vis = <TextVis {...data}/>
-        visType = "text"; 
-    } else if (visNum === 3) {
-        vis = <StaticVis {...data}/>
-        visType = "static"; 
-    }
-    
-    console.log("App is rendering");
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1>Bayesian inference</h1>
-        </header>
-        <div className="Content">
-          <Question data={data} nextScreen={this.nextScreen} visType={visType}>
-            {vis}
-          </Question>
+  renderProblem = () => {
+      let data = this.state.data;
+      let vis = <div />;
+      let visType = "";
+      let visNum = getRandomInt(3);
+      // let visNum = 0; 
+      if (visNum == 0) {
+        vis = <Interactive data={data} />
+        visType = "interactive";
+      } else if (visNum == 1) {
+        vis = <FrequencyChart {...data} test={0} condition={0} />
+        visType = "static_interactive";
+      } else if (visNum === 2) {
+        vis = <TextVis {...data} />
+        visType = "text";
+      } else if (visNum === 3) {
+        vis = <StaticVis {...data} />
+        visType = "static";
+      }
+
+      console.log("App is rendering");
+      return (
+        <div className="App">
+          <header className="App-header">
+            <h1>Bayesian inference</h1>
+          </header>
+          <div className="Content">
+            <Question data={data} nextScreen={this.nextScreen} visType={visType}>
+              {vis}
+            </Question>
+          </div>
         </div>
+      );
+  }
+
+  renderQuestionnaire = () =>  {
+    let form = (
+      <div>
+          <form 
+              onSubmit={(e) => { 
+                  e.preventDefault();
+                  this.parseData(); 
+              }}
+          >
+              <label>gender:
+                  <select id="gender" name="gender" required={true}>
+                      <option value="Other">Other</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                  </select>
+              </label>
+              <br/>
+
+              <label>age: 
+                  <input type="number" min="0" max="100" id="age" placeholder={"Your age"} required={true}/>
+              </label>
+              <br />
+              <label>Experience with Statistics:
+                  <select id="experience" name="experience" required={true}>
+                      <option value="High">High</option>
+                      <option value="Medium">Medium</option>
+                      <option value="Low">Low</option>
+                  </select>
+              </label>
+              <br/>
+              <label>Education:
+                  <select id="education" name="education" required={true}>
+                      <option value="High School">High School</option>
+                      <option value="2 Year College">2 year College</option>
+                      <option value="4 Year College">4 Year College</option>
+                      <option value="Masters">Masters</option>
+                      <option value="PhD">PhD</option>
+                      <option value="MD">MD</option>
+                  </select>
+              </label>
+              <br/>
+              <h4>Note: Hitting Send will open your Email application. 
+                Please hit send without modifying the message body</h4>
+              <input type="submit" value="Send Data to Proctor" />
+          </form>
       </div>
-    );
+  );
+  return (
+      <div className="Survey">
+          <h1>Please enter a bit about yourself</h1>
+          {form}
+      </div>
+  );
+  }
+
+  parseData = () => {
+    let gender = document.getElementById("gender");
+    let genderVal = gender.value; 
+    let age = document.getElementById("age");
+    let ageVal = parseInt(age.value, undefined);
+    if (isNaN(ageVal)) {
+        ageVal = 0;
+    }
+    let experience = document.getElementById("experience");
+    let expVal = experience.value; 
+    let education = document.getElementById("education");
+    let edValue = education.value; 
+    this.row = {...this.row, age: ageVal, gender: genderVal, experience: expVal, education: edValue};
+    window.location.href = "mailto:smclaypool@wpi.edu?subject=Experiment%20Results&body=" + JSON.stringify(this.row);
+    console.log(this.row)
+}
+
+  render() {
+    if (this.screen === 0) {
+      return this.renderProblem(); 
+    }
+    else {
+      return this.renderQuestionnaire(); 
+    }
   }
 }
 

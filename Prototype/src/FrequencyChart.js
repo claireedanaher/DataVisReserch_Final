@@ -15,6 +15,7 @@ import * as d3 from 'd3';
  */
 export class FrequencyChart extends Component {
   d3id = "D3Vis";
+  data = []
 
   // necessary part for getDerivedStateFromProps
   state = {
@@ -101,40 +102,31 @@ export class FrequencyChart extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log("Update")
-    console.log("Props was")
-    console.log(prevProps)
-    console.log("State was: ")
-    console.log(prevState)
-    console.log("State is now")
-    console.log(this.state)
-    console.log("props is now")
-    console.log(this.props)
-    console.log('freqchart condition is:')
-    console.log(this.state.condition)
-    console.log('freqchart test is:')
-    console.log(this.state.test)
+    // labels that should be rendered: 
+    let new_labels = this.make_data().map(el => el.label); 
+    let all_labels = this.data.map(el => el.label);
+    let chartHeight = this.defaults.height - this.defaults.margin.top - this.defaults.margin.bottom; 
+    let labelHeight = chartHeight / 4; 
+
     setTimeout(() => {
-      d3.selectAll('#human')
+      d3.selectAll('.attribute')
         .transition()
         .duration(500)
-        //.attr('y', 10)
-        .style('opacity', 0);
-      d3.selectAll('#idlabel')
-        .transition()
-        .duration(500)
-        .style('fill-opacity', 0);
-      d3.selectAll('#idcount')
-        .transition()
-        .duration(500)
-        .style('fill-opacity', 0);
+        .attr('transform', (d, i) => {
+          let ind = new_labels.indexOf(d.label); 
+          if(ind === -1) {
+            return `translate(0, ${800})`;
+          }
+          return `translate(0, ${labelHeight * (ind + .5)})`;
+        });
     }, 500);
-    setTimeout(() => {
-      this.renderD3(); 
-    }, 1000);
+    // setTimeout(() => {
+    //   this.renderD3(); 
+    // }, 1000);
   }
 
   renderD3 = () => {
+    console.log("Clearing and rendering d3");
     let chartWidth = this.defaults.width- this.defaults.margin.left - this.defaults.margin.right; 
     let chartHeight = this.defaults.height - this.defaults.margin.top - this.defaults.margin.bottom; 
     let containerId = '#' + this.d3id; 
@@ -152,7 +144,8 @@ export class FrequencyChart extends Component {
 
 
     // set up axis
-    let data = this.make_data(); 
+    this.data = this.make_data(); 
+    let data = this.data; 
 
     // for each label, put it on the left of the line (using margin)
 
